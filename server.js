@@ -13,6 +13,11 @@ app.get("/musicians", async (request, response) => {
     response.json(results);
 })
 
+app.get("/musicians/:id", async (req, res) => {
+    result = await Musician.findByPk(req.params.id);
+    res.json(result);
+})
+
 app.listen(port, () => {
     sequelize.sync();
     console.log(`Listening on port ${port}`)
